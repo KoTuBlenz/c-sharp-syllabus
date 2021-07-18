@@ -14,10 +14,20 @@ namespace Exercise_1
             int.TryParse(Console.ReadLine(), out int number1);
             Console.WriteLine("Enter integer #2");
             int.TryParse(Console.ReadLine(), out int number2);
-            if (number1 == 15 || number2 == 15) Console.WriteLine("True");
-            else if (number1 + number2 == 15) Console.WriteLine("True");
-            else if (number1 - number2 == 15 || number2 - number1 == 15) Console.WriteLine("True");
-            else Console.WriteLine("False");
+
+            if (number1 == 15 || number2 == 15 ||
+                number1 + number2 == 15 ||
+                number1 - number2 == 15 || 
+                number2 - number1 == 15) 
+            { 
+                Console.WriteLine("True"); 
+            }
+            
+            else
+            {
+                Console.WriteLine("False");
+            }
+
             Console.ReadKey();
 
 

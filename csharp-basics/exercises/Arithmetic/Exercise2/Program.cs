@@ -12,8 +12,16 @@ namespace Exercise2
         {
             Console.WriteLine("Enter a number!");
             int.TryParse(Console.ReadLine(), out int number);
-            if (number % 2 == 0) Console.WriteLine("Even number");
-            else Console.WriteLine("Odd number");
+
+            if (number % 2 == 0)
+            {
+                Console.WriteLine("Even number");
+            }
+            else
+            {
+                Console.WriteLine("Odd number");
+            }
+
             Console.ReadKey();
             Console.WriteLine("Bye!");
             Console.ReadKey();

@@ -17,30 +17,34 @@ namespace CozaLozaWoza
                 {
                     answer += "Coza";
                 }
+
                 if (i % 5 == 0)
                 {
                     answer += "Loza";
                 }
+
                 if (i % 7 == 0)
                 {
                     answer += "Woza";
                 }
+
                 if (answer != "")
                 {
                     Console.Write(answer);
                 }
-                    else
-                    {
-                        Console.Write(i);
-                    }
+                else
+                {
+                    Console.Write(i);
+                }
+
                 if (i % 11 == 0)
                 {
                     Console.WriteLine();
                 }
-                    else
-                    {
-                        Console.Write(" ");
-                    }
+                else
+                {
+                    Console.Write(" ");
+                }
             }
             Console.ReadKey();
         }

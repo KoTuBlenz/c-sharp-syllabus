@@ -23,13 +23,17 @@ namespace Exercise8
                 Console.WriteLine("Error: Base pay is too low");
                 return;
             }
+
             if (hoursWorked > 60)
             {
                 Console.WriteLine("Error: Too many worked hours");
                 return;
             }
             double salary;
-            if (hoursWorked < 40) salary = basePay * hoursWorked;
+            if (hoursWorked < 40)
+            {
+                salary = basePay * hoursWorked;
+            }
             else
             {
                 salary = basePay * 40;
