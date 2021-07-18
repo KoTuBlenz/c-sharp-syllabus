@@ -6,27 +6,25 @@ namespace MoreVariablesAndPrinting
     {
         static void Main(string[] args)
         {
-            String myName, myEyes, myTeeth, myHair;
-            int myAge, myHeight, myWeight;
+            String name = "Zed A. Shaw";
+            int age = 35;
+            int height = 74;  // inches
+            int weight = 180; // lbs
+            double heightInCentimeters = height * 2.54;
+            double weightInKilos = weight * 0.453592;
+            String eyes = "Blue";
+            String teeth = "White";
+            String hair = "Brown";
 
-            myName = "Zed A. Shaw";
-            myAge = 35;
-            myHeight = 74;  // inches
-            myWeight = 180; // lbs
-            myEyes = "Blue";
-            myTeeth = "White";
-            myHair = "Brown";
-
-            Console.WriteLine("Let's talk about " + myName + ".");
-            Console.WriteLine("He's " + myHeight + " inches tall.");
-            Console.WriteLine("He's " + myWeight + " pounds heavy.");
+            Console.WriteLine("Let's talk about " + name + ".");
+            Console.WriteLine("He's " + String.Format("{0:0.00}", heightInCentimeters) + " centimeters tall.");
+            Console.WriteLine("He's " + String.Format("{0:0.00}", weightInKilos) + " kilos heavy.");
             Console.WriteLine("Actually, that's not too heavy.");
-            Console.WriteLine("He's got " + myEyes + " eyes and " + myHair + " hair.");
-            Console.WriteLine("His teeth are usually " + myTeeth + " depending on the coffee.");
-
-            Console.WriteLine("If I add " + myAge + ", " + myHeight + ", and " + myWeight
-                               + " I get " + (myAge + myHeight + myWeight) + ".");
-
+            Console.WriteLine("He's got " + eyes + " eyes and " + hair + " hair.");
+            Console.WriteLine("His teeth are usually " + teeth + " depending on the coffee.");
+            Console.WriteLine("If I add " + age + ", " + String.Format("{0:0.00}", heightInCentimeters) + ", and " 
+                               + String.Format("{0:0.00}", weightInKilos) + " I get " 
+                               + String.Format("{0:0.00}", (age + height + weight)) + ".");
             Console.ReadKey();
         }
     }
