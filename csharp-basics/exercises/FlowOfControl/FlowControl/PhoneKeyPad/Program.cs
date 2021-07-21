@@ -10,12 +10,12 @@ namespace PhoneKeyPad
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter text without numbers  to convert it to phone keypad digits");
+            Console.WriteLine("Enter text without numbers to convert it to phone keypad digits");
 
             string textLower = Console.ReadLine().ToLower();
             if (textLower.Length > 0)
             {
-                if (!containsNumbers(textLower))
+                if (!textLower.Any(Char.IsDigit))   //Checks if text contains a number
                 {
                     string answer = "";
                     foreach (char letter in textLower)
@@ -36,19 +36,7 @@ namespace PhoneKeyPad
             
             Console.ReadKey();
         }
-        public static bool containsNumbers (string text) // Checks if the string contains a number
-        {
-            string numbers = "1234567890";
-            foreach (char charecter in text)
-            {
-                if (numbers.Contains(charecter))
-                {
-                    return true;
-                }
-                
-            }
-            return false;
-        }
+        
         public static string charToDigit(char textChar) //Converts a charecter to a number on the keypad
         {
             switch (textChar)
