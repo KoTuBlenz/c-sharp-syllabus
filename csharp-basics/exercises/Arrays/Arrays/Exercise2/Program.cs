@@ -1,29 +1,56 @@
 ﻿using System;
 
+
 namespace Exercise2
 {
     class Program
     {       
         //TODO: Write a C# program to sum values of an array.
         private static void Main(string[] args)
-        {
-            int[] myArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        {            
             var sum = 0;
-
-            Console.WriteLine("Please enter a min number");
-            int minNumber = int.Parse(Console.ReadLine());
-            Console.WriteLine("Please enter a max number");
-            int maxNumber = int.Parse(Console.ReadLine());
-
-            /*
-            fixme
-            for (........) {
-            ........
+            int minNumber;
+            int maxNumber;
+           while(true)
+            {
+                Console.WriteLine("Please enter a min number ");
+               if(int.TryParse(Console.ReadLine(), out minNumber))
+               {                  
+                        break;               
+               }
+               else
+               {
+                    Console.WriteLine("Input is not a number");
+               }
             }
-            */
-
+            while (true)
+            {
+                Console.WriteLine("Please enter a max number ");
+                if (int.TryParse(Console.ReadLine(), out maxNumber))
+                { 
+                    if (maxNumber>=minNumber)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Max number cannot be smaller than min number");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Input is not a number");
+                }
+            }
+            int[] myArray = new int[maxNumber-minNumber+1];
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                myArray[i] = i + minNumber;
+                sum += myArray[i];
+            }
             Console.WriteLine("The sum is " + sum);
             Console.ReadKey();
-            }
-        }
+        }        
+    
+    }
 }
