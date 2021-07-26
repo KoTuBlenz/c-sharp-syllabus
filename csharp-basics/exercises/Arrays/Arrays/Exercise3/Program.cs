@@ -1,4 +1,5 @@
-﻿namespace Exercise3
+﻿using System;
+namespace Exercise3
 {
     class Program
     {
@@ -6,19 +7,18 @@
         private static void Main(string[] args)
         {
             int[] numbers = {20, 30, 25, 35, -16, 60, -100};
-
-            /*
-            fixme - calculate sum of all array elements 
+            int numberArrayLenght =numbers.Length;
+           
             int sum = 0;
-            for (?){
-                
+            for (int i= 0; i< numberArrayLenght; i++)
+            {
+                sum += numbers[i];
             }
-            */
+            Console.WriteLine(sum);
+            double average = (double)sum / (double)numberArrayLenght;
 
-            /*
-            fixme - calculate average value 
-            Console.WriteLine("Average value of the array elements is : " + average);
-            */
+            Console.WriteLine("Average value of the array elements is : " + String.Format("{0:0.00}",average));
+            Console.ReadKey();
         }
     }
 }
