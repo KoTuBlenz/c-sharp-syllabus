@@ -11,7 +11,7 @@ namespace Exercise2
             var sum = 0;
             int minNumber;
             int maxNumber;
-           while(true)
+           while (true)
             {
                 Console.WriteLine("Please enter a min number ");
                if(int.TryParse(Console.ReadLine(), out minNumber))
@@ -42,7 +42,7 @@ namespace Exercise2
                     Console.WriteLine("Input is not a number");
                 }
             }
-            int[] myArray = new int[maxNumber-minNumber+1];
+            int[] myArray = new int[maxNumber - minNumber + 1];
             for (int i = 0; i < myArray.Length; i++)
             {
                 myArray[i] = i + minNumber;

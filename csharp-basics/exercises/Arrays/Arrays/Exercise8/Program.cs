@@ -4,56 +4,71 @@ namespace Exercise8
 {
     class Program
     {
-        private static char [] wordToGuess = pickWord().ToCharArray();
+        private static char [] wordToGuess = PickWord().ToCharArray();
         private static int wordToGuessLenght = wordToGuess.Length;
-        private static char[] wordToDisplay = wordToBlank();
+        private static char[] wordToDisplay = WordToBlank();
         private static string missedLetters="";
         private static int numberOfMisses = 0;
             
         static void Main(string[] args)
         {            
-            Console.WriteLine("Welcome to a game of Hangman.\n" +
-                "You have 10 chances to guess");
+            
             while (true)
             {
                 while (true)
-                {                   
-                    displayElements();
-                    letterInput();
-                    if (hasGameEnded())
+                {
+                    Console.WriteLine("Welcome to a game of Hangman.\n" +
+                    $"You have {10-numberOfMisses} chances left to guess");
+                    DisplayElements();
+                    LetterInput();
+                    if (HasGameEnded())
                     {
                         break;
                     }
-
+                    Console.Clear();
                 }
                 Console.Write("Do you want to play again?(PLAY / QUIT)  ");
-                if (answerCheck("play", "quit"))
-                {                    
-                    resetGame();
-                }
-                else
+                while (true)
                 {
-                    Environment.Exit(0);
-                }                
+                    string answer = Console.ReadLine().ToLower();
+                    if (answer == "play")
+                    {
+                        Console.Clear();
+                        ResetGame();
+                        break;
+                    }
+                    else if (answer=="quit") 
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect input");
+                    }
+                }           
             }           
         }
-        private static void displayElements()       //Displays game to the player
+
+        private static void DisplayElements()       //Displays game to the player
         {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine($"\nWord: {String.Join(" ", wordToDisplay)}\n");
-            Console.WriteLine($"Misses: {missedLetters}");
-            Console.WriteLine(stateOfHangMan());
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+            Console.WriteLine($"Misses: {missedLetters}\n");
+            Console.WriteLine(StateOfHangMan());
         }
-        private static char [] wordToBlank() // Fills a blank word based of the wordToGuess
+
+        private static char [] WordToBlank() // Fills a blank word based of the wordToGuess
         {
-            char [] wordToBlank = new char [wordToGuess.Length];           
-            for (int i =0; i< wordToGuessLenght; i++)
+            char [] wordToBlank = new char [wordToGuess.Length];
+            for (int i = 0; i < wordToGuessLenght; i++)
             {
                 wordToBlank[i] = '_';
             }
             return wordToBlank;
         }
-        private static void letterInput()   // Checks the letter entered by player and compares it to previos letters
+
+        private static void LetterInput()   // Checks the letter entered by player and compares it to previos letters
         {
             while (true)
             {
@@ -63,7 +78,6 @@ namespace Exercise8
                 if (!Char.IsLetter(playerInput))
                 {
                     Console.WriteLine("Please input a letter.");
-
                 }
                 else if (missedLetters.IndexOf(playerInput) > -1 || Array.IndexOf(wordToDisplay,playerInput) > -1)
                 {
@@ -71,38 +85,14 @@ namespace Exercise8
                 }
                 else
                 {
-                    checkWord(playerInput);
+                    CheckWord(playerInput);
                     break;
                 }
-
-
             }
-
-        }
-        private static bool answerCheck(string answer1, string answer2) // checks players answer to yes/no type question.
-                                                                        // Answer1 returns true, answer 2 returns false
-        {
-            while (true)
-            {
-                string input = Console.ReadLine().ToLower();
-                if (input == answer1.ToLower())
-                {
-                    return true;
-                }
-                else if (input == answer2.ToLower())
-                {
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("Input is not correct");
-                }
-            }
-        }
-
-        private static void checkWord( char letter) //Checks if player has found a letter. If yes, then it places the letter in wordToDisplay.
-                                                    //If not, then it adds the letter to missedLetters and increases the numberOfMisses
-        {
+        }     
+        
+        private static void CheckWord( char letter)                     //Checks if player has found a letter. If yes, then it places the letter in wordToDisplay.                                                    
+        {                                                               //If not, then it adds the letter to missedLetters and increases the numberOfMisses
             if (Array.IndexOf(wordToGuess, Char.ToLower(letter)) > -1)
             {
                 for (int i = 0; i < wordToGuessLenght; i++)
@@ -117,27 +107,43 @@ namespace Exercise8
             {
                 missedLetters += letter +" ";
                 numberOfMisses++;
-            }
-           
-        }
-       
-        private static bool hasGameEnded() //Checks if the game has ended by player reaching the max amount of missedLetters
-                                           //or by player guessing the word
-        {
-            
+            }           
+        }   
+        
+        private static bool HasGameEnded()      //Checks if the game has ended by player reaching the max amount of missedLetters
+        {                                       //or by player guessing the word
             if (numberOfMisses == 10)
-            {                
-                displayElements();
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to a game of Hangman.\n" +
+                "The game has ended.");
+                DisplayElements();
                 Console.WriteLine("You have lost. Do you want to see the word? (YES / NO)");
-                if (answerCheck("yes", "no"))
+                while (true)
                 {
-                    Console.WriteLine($"The word you tried to guess is: {String.Join(" ", wordToGuess)}");
-                }                  
+                    string answer = Console.ReadLine().ToLower();
+                    if (answer== "yes")
+                    {
+                        Console.WriteLine($"The word you tried to guess is: {String.Join(" ", wordToGuess)}");
+                        break;
+                    }
+                    else if (answer == "no")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorect input");
+                    }
+                }                        
                 return true;
             }
             else if (Array.IndexOf(wordToDisplay, '_')==-1)
-            {                
-                displayElements();
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to a game of Hangman.\n" +
+                "The game has ended.");
+                DisplayElements();
                 Console.WriteLine("Congratulations! You have won!");
                 return true;
             }
@@ -146,15 +152,17 @@ namespace Exercise8
                 return false;
             }
         }
-        private static void resetGame()  // Resets game by reseting all of the values used
+
+        private static void ResetGame()  // Resets game by reseting all of the values used
         {
-            wordToGuess = pickWord().ToCharArray();
+            wordToGuess = PickWord().ToCharArray();
             wordToGuessLenght = wordToGuess.Length;
-            wordToDisplay = wordToBlank();
+            wordToDisplay = WordToBlank();
             missedLetters = "";
             numberOfMisses = 0;
         }
-        private static string stateOfHangMan() //Changes the hangman logo based on numberOfMisses
+        
+        private static string StateOfHangMan() //Changes the hangman logo based on numberOfMisses
         {
             switch (numberOfMisses)
             {
@@ -165,10 +173,7 @@ namespace Exercise8
                     "         \n" +
                     "         \n" +
                     "         \n" +
-                    "#########\n"
-                    ;
-           
-
+                    "#########\n";        
                 case 1: 
                     return 
                     " |       \n" +
@@ -176,8 +181,7 @@ namespace Exercise8
                     " |       \n" +
                     " |       \n" +
                     " |       \n" +
-                    "#########\n"
-                    ;
+                    "#########\n";
                 case 2:
                     return
                     " |     | \n" +
@@ -185,9 +189,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |     | \n" +
                     " |     | \n" +
-                    "#########\n"
-                    ;
-
+                    "#########\n";
                 case 3:
                     return
                     " +-----+ \n" +
@@ -195,9 +197,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |     | \n" +
                     " |     | \n" +
-                    "#########\n"
-                    ;
-                    
+                    "#########\n";                    
                 case 4:
                     return
                     " +--+--+ \n" +
@@ -205,9 +205,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |     | \n" +
                     " |     | \n" +
-                    "#########\n"
-                    ;
-                   
+                    "#########\n";                   
                 case 5:
                     return
                     " +--+--+ \n" +
@@ -215,8 +213,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |     | \n" +
                     " |   \\ | \n" +
-                    "#########\n"
-                    ;
+                    "#########\n";
                 case 6:
                     return
                     " +--+--+ \n" +
@@ -224,8 +221,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |     | \n" +
                     " | / \\ | \n" +
-                    "#########\n"
-                    ;
+                    "#########\n";
 
                 case 7:
                     return
@@ -234,8 +230,7 @@ namespace Exercise8
                     " |     | \n" +
                     " |  |  | \n" +
                     " | / \\ | \n" +
-                    "#########\n"
-                    ;
+                    "#########\n";
                 case 8:
                     return
                     " +--+--+ \n" +
@@ -243,8 +238,7 @@ namespace Exercise8
                     " |     | \n" +
                     " | /|  | \n" +
                     " | / \\ | \n" +
-                    "#########\n"
-                    ;
+                    "#########\n";
                 case 9:
                     return
                     " +--+--+ \n" +
@@ -252,9 +246,7 @@ namespace Exercise8
                     " |     | \n" +
                     " | /|\\ | \n" +
                     " | / \\ | \n" +
-                    "#########\n"
-                    ;
-
+                    "#########\n";
                 case 10:
                     return
                     " +--+--+ \n" +
@@ -262,14 +254,11 @@ namespace Exercise8
                     " |  O  | \n" +
                     " | /|\\ | \n" +
                     " | / \\ | \n" +
-                    "#########\n"
-                    ;
-                    
-
+                    "#########\n";                   
             }
         }
-
-        private static string pickWord()  // Picks and returns a random word from the array words.
+        
+        private static string PickWord()  // Picks and returns a random word from the array words.
                                           // PS. DONT PEEK IN THE LIST!
         {
             var rand = new Random();
