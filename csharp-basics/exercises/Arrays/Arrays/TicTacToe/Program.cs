@@ -8,7 +8,7 @@ namespace TicTacToe
         private static char playerSymbol = 'X'; 
 
         private static void Main(string[] args)
-        {            
+        {    
             InitBoard();
             while (true)
             {

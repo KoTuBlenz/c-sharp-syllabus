@@ -17,7 +17,8 @@ namespace Exercise5
             var indexOfElement29 = -1;
             var myArraySize = myArray.Length;
            
-            for (int i=0; i< myArraySize; i++) {
+            for (int i=0; i< myArraySize; i++) 
+            {
                 if (myArray[i] == 36)
                 {
                     indexOfElement36 = i;
