@@ -22,20 +22,18 @@ namespace Exercise1
                 "C#",
                 "C Programming",
                 "C++"
-            };
-            
-            
-            //fixme
+            };            
+           
             Console.WriteLine("Original numeric array : " + string.Join("," , myArray1));
-            //........... //Sort array
-            
+
+            Array.Sort(myArray1);            
             Console.WriteLine("Sorted numeric array : " + string.Join("," , myArray1));
     
             Console.WriteLine("Original string array : " + string.Join("," , myArray2));
-            //......... //Sort array
-            
+
+            Array.Sort(myArray2);
             Console.WriteLine("Sorted string array : " + string.Join("," , myArray2));
-            //*/
+
             Console.ReadKey();
         }
     }
