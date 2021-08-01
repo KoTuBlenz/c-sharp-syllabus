@@ -6,7 +6,7 @@ namespace Exercise3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wlcome to \"I have lost my number in this array and I need to find it\" program!");
+            Console.WriteLine("Welcome to \"I have lost my number in this array and I need to find it\" program!");
             int[] randArray = FillArray(20, 100);
             DisplayArray(randArray);
             Console.Write("Please enter the number you are looking for: ");

@@ -20,7 +20,6 @@ namespace Excersie10
                 int[] numArr = new int[max - min+1];
                 for (int n=min; n<=max; n++)
                 {
-                    
                     int num = n + i;
                     if (num > max)  //Wraps the numbers around
                     {
@@ -44,7 +43,6 @@ namespace Excersie10
                 {
                     Console.WriteLine("Incorrect input");
                 }
-                
             }
         }
     }
