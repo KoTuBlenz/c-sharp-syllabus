@@ -1,40 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FuelConsumptionCalculator
 {
+
     class Program
     {
+        private static IList<Car> _carList = new List<Car>() { };
         private static void Main(string[] args)
         {
-            int startKilometers;
-            int liters;
-            
-            Console.WriteLine();
-
-            Car car = new Car(0);
-            Car car1 = new Car(0);
-            for (int i = 0; i < 3; i++)
+            while (true)
             {
-                Console.Write("Enter first reading: ");
-                startKilometers = Convert.ToInt32(Console.ReadLine());    
-                Console.Write("Enter liters reading: ");
-                liters = Convert.ToInt32(Console.ReadLine());
-                car.FillUp(startKilometers, liters);
-                
-                Console.Write("Enter first reading: ");
-                startKilometers = Convert.ToInt32(Console.ReadLine());    
-                Console.Write("Enter liters reading: ");
-                liters = Convert.ToInt32(Console.ReadLine());
-                car1.FillUp(startKilometers, liters);
+                Console.Clear();
+                Console.WriteLine("Welcome to fuel consumption calculator\n");
+                displayCarList();
+                Console.WriteLine("Press 1 To calculate consumption\n" +
+                    "Press 0 to exit");
+                if (int.Parse(Console.ReadLine()) != 1)
+                {
+                    Environment.Exit(0);
+                }
+                Console.WriteLine("\nEnter first odometer reading");
+                Car car1 = new Car(double.Parse(Console.ReadLine()));
+                Console.WriteLine("Enter second odometer reading");
+                double secondReading = double.Parse(Console.ReadLine());
+                Console.WriteLine("Enter fuel used");
+                double fuel = double.Parse(Console.ReadLine());
+                car1.FillUp(secondReading, fuel);
+                _carList.Add(car1);
             }
+        }
 
-            Console.WriteLine("Kilometers per liter are " + car.CalculateConsumption() + " gasHog:" + car.GasHog());
-            Console.WriteLine("Car1 Kilometers per liter are " + car1.CalculateConsumption()+ " economyCar:" + car.EconomyCar());
-            Console.ReadKey();
+        //Displays list of cars and their fuel consumption
+        public static void displayCarList()
+        {
+            if (_carList.Count > 0)
+            {
+                int i = 1;
+                foreach (Car car in _carList)
+                {
+                    if (car.GasHog()) Console.WriteLine($"Car #{i} fuel consumption is {car.ConsumptionPer100Km()} liters per 100km, and the car is a Gas Hog");
+                    else if (car.EconomyCar()) Console.WriteLine($"Car #{i} fuel consumption is {car.ConsumptionPer100Km()} liters per 100km, and the car is economic");
+                    else Console.WriteLine($"Car #{i} fuel consumption is {car.ConsumptionPer100Km()} liters per 100km, and the car has average fuel consuption");
+                    i++;
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
