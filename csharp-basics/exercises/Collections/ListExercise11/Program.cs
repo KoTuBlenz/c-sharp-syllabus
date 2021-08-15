@@ -10,19 +10,35 @@ namespace ListExercise11
     {
         static void Main(string[] args)
         {
-            //TODO: Create an List with string elements
+            var farmAnimals = new List<string>();
+            farmAnimals.Add("Dog");
+            farmAnimals.Add("Cat");
+            farmAnimals.Add("Hamster");
+            farmAnimals.Add("Horse");
+            farmAnimals.Add("Cow");
+            farmAnimals.Add("Parrot");
+            farmAnimals.Add("Pig");
+            farmAnimals.Add("Mouse");
+            farmAnimals.Add("Rat");
+            farmAnimals.Add("Rooster");
+            farmAnimals.Insert(4, "Chicken");               //Changes 4th element of farmAnimals list to "Chicken"
+            farmAnimals[farmAnimals.Count - 1] = "Donkey";  //Changes the last element to "Donkey"
+            farmAnimals.Sort();
 
-            //TODO: Add 10 values to list
-
-            //TODO: Add new value at 5th position
-
-            //TODO: Change value at last position (Calculate last position programmatically)
-
-            //TODO: Sort your list in alphabetical order
-
-            //TODO: Check if your list contains "Foobar" element
-
-            //TODO: Print each element of list using loop
+            if (farmAnimals.Contains("Foobar"))
+            {
+                Console.WriteLine("List contains \"Foobar\"");
+            }
+            else
+            {
+                Console.WriteLine("List does not contain \"Foobar\"");
+            }
+            
+            foreach(string animal in farmAnimals)
+            {
+                Console.WriteLine(animal);
+            }
+            Console.ReadKey();
         }
     }
 }
