@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace FuelConsumptionCalculator
 {
-
     class Program
     {
         private static IList<Car> _carList = new List<Car>() { };

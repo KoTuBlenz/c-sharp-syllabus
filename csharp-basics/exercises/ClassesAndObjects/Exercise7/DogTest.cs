@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise7
 {
@@ -10,7 +6,6 @@ namespace Exercise7
     {
         static void Main(string[] args)
         {
-
             Dog dog1 = new Dog("Max", "male", "Lady ", "Rocky");
             Dog dog2 = new Dog("Rocky", "male", "Molly", "Sam");
             Dog dog3 = new Dog("Sparky", "male", null, null);

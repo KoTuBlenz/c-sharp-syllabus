@@ -18,9 +18,7 @@ namespace Exercise5
         //Returns true if days are less or equal to 31 and if months are less and equal to 12
         private bool IsDateCorrect()
         {
-            if (day > 31) return false;
-            else if (month > 12) return false;
-            else return true;
+            return day < 32 && month < 13;
         }
         //Prints date or "Date is not correct", if date is not correct
         public void PrintDate()

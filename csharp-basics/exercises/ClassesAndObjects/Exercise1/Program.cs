@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace Exercise1
 {
     class Program
@@ -33,9 +34,8 @@ namespace Exercise1
                         break;
                 }
             }
-            
-
         }
+
         static void EditProduct()
         {
             Console.Clear();
@@ -72,6 +72,7 @@ namespace Exercise1
                     return;
             }
         }
+
         static double CheckUserInput()
         {
             while (true)
@@ -86,6 +87,7 @@ namespace Exercise1
                 }
             }
         }
+
         static void AddProduct()
         {
             Console.Clear();
@@ -97,6 +99,7 @@ namespace Exercise1
             int productAmount = (int)CheckUserInput();
             productList.Add(new Product(productName, productPrice, productAmount));
         }
+
         static void PrintList()
         {
             int i = 1;
@@ -107,8 +110,8 @@ namespace Exercise1
                 i++;
             }
         }
-       
     }
+
     class Product
     {
         private string _name;
@@ -120,14 +123,17 @@ namespace Exercise1
             _price = price;
             _amount = amount;
         }
+
         public void ChangePrice(double newPrice)
         {
             _price = newPrice;
         }
+
         public void ChangeAmount (int newAmount)
         {
             _amount = newAmount;
         }
+
         public void PrintProduct()
         {
             Console.WriteLine($"\"{_name}\", {String.Format("{0:0.00}", _price)} EUR, amount {_amount}");

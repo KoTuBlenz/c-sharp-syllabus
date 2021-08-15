@@ -6,15 +6,13 @@ namespace VideoStore
     class VideoStore
     {
         private List<Video> _videoList=new List<Video>() { };
-        public VideoStore()
-        {
-            
-        }
+        public VideoStore() { }
 
         public void AddVideo(string title)
         {
             _videoList.Add(new Video(title));
         }
+
         //Returns a Video object from a video list by its title
         private Video VideoByTitle(string title)
         {
@@ -30,6 +28,7 @@ namespace VideoStore
                 return _videoList[index];
             }
         }
+
         public void Checkout(string title)
         {
             if (VideoByTitle(title).Available())

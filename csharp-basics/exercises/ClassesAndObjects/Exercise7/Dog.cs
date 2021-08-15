@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise7
 {
@@ -19,6 +15,7 @@ namespace Exercise7
             _dogMother = mother;
             _dogFather = father;
         }
+
         public string FathersName()
         {
             if (_dogFather == null)
@@ -30,16 +27,10 @@ namespace Exercise7
                 return _dogFather;
             }
         }
+
         public bool HasSameMotherAs(Dog otherDog)
         {
-            if(_dogMother == otherDog._dogMother)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _dogMother == otherDog._dogMother;
         }
     }
 }

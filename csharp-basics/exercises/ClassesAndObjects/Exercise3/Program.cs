@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise3
 {
@@ -18,8 +14,8 @@ namespace Exercise3
             while (true)
             {
                 Console.Clear();
-                carFuelGauge.showFuel();
-                carOdometer.showOdo();
+                carFuelGauge.ShowFuel();
+                carOdometer.ShowOdo();
                 Console.WriteLine("Would you like to fuel up before the ride?(Y/N)");
                 string answer = Console.ReadLine().ToLower();
                 if (answer == "y")
@@ -28,9 +24,9 @@ namespace Exercise3
                     int x = int.Parse(Console.ReadLine());
                     for(int i=0; i<x; i++)
                     {
-                        if (!carFuelGauge.isTankFull())
+                        if (!carFuelGauge.IsTankFull())
                         {
-                            carFuelGauge.fillFuelTank();
+                            carFuelGauge.FillFuelTank();
                         }
                         else
                         {
@@ -38,24 +34,24 @@ namespace Exercise3
                             break;
                         }
                     }
-                    carFuelGauge.showFuel();
+                    carFuelGauge.ShowFuel();
                 }
                 Console.WriteLine("How many kilometers would you like to travel?");
                 int distance = int.Parse(Console.ReadLine());
                 for(int i=0; i < distance; i++)
                 {
-                    if (carFuelGauge.isTankEmpty())
+                    if (carFuelGauge.IsTankEmpty())
                     {
                         Console.WriteLine($"The car fuel tank is empty. You only traveled {i}km");
                         break;
                     }
                     else
                     {
-                        carOdometer.addMilage();
+                        carOdometer.AddMilage();
                     }
                 }
-                carOdometer.showOdo();
-                carFuelGauge.showFuel();
+                carOdometer.ShowOdo();
+                carFuelGauge.ShowFuel();
                 Console.WriteLine("Would you like to drive again?(Y/N)");
                 answer = Console.ReadLine().ToLower();
                 if (answer == "n")
@@ -66,6 +62,7 @@ namespace Exercise3
             Console.ReadKey();
         }
     }
+
     public class FuelGauge
     {
         private static double _fuel;    //Fuel in the car
@@ -74,7 +71,7 @@ namespace Exercise3
         public FuelGauge(double fuel)
         {
             _fuel = fuel;
-            if (isTankFull())
+            if (IsTankFull())
             {
                 Console.WriteLine("The fuel tank max size is 70 liters");
                 Console.ReadKey();
@@ -82,33 +79,39 @@ namespace Exercise3
             }
             
         }
+
         //Displays amount of fuel in car
-        public void showFuel()
+        public void ShowFuel()
         {
             Console.WriteLine($"There is {_fuel} liters in car");
         }
+
         //Fills feul tank by 1 liter
-        public void fillFuelTank()
+        public void FillFuelTank()
         {
             _fuel++;
            
         }
+
         //Checks if fuel tank is full and returns bool
-        public bool isTankFull()
+        public bool IsTankFull()
         {
             return _maxFuel <= _fuel;
         }
+
         //Checks if fuel tank is empty
-        public bool isTankEmpty()
+        public bool IsTankEmpty()
         {
             return _fuel == 0;
         }
+
         //Removes 1 liter from fuel tank
-        public static void burnFuel()
+        public static void BurnFuel()
         {
             _fuel--;
         }
     }
+
     class Odometer
     {
         private int _currentOdo;
@@ -119,29 +122,32 @@ namespace Exercise3
         public  Odometer (int currentOdo)
         {
             _currentOdo = currentOdo;
-            if (hasOdoRechedMax())
+            if (HasOdoRechedMax())
             {
                 _currentOdo -= _maxMilage;
             }
         }
+
         //Displays milage of a car
-        public void showOdo()
+        public void ShowOdo()
         {
             Console.WriteLine($"Current milage is {String.Format("{0:n0}", _currentOdo)} km");
         }
+
         //Checks if Odometer has reached its maximum milage
-        public bool hasOdoRechedMax()
+        public bool HasOdoRechedMax()
         {
             return _currentOdo > _maxMilage;
         }
+
         //Adds milage to odometer and burns 1 liter of fuel for every 10km
-        public void addMilage()
+        public void AddMilage()
         {
-            if (hasOdoRechedMax()) _currentOdo = 0;
+            if (HasOdoRechedMax()) _currentOdo = 0;
             _kilometersDriven++;
             if (_kilometersDriven % 10 == 0)
             {
-                FuelGauge.burnFuel();
+                FuelGauge.BurnFuel();
             }
             _currentOdo++;
         }

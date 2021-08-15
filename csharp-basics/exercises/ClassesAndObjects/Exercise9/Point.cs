@@ -3,12 +3,12 @@ namespace Exercise9
 {
     class Point
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public Point(int X, int Y)
+        public int X { get; set; }
+        public int Y { get; set; }
+        public Point(int x, int y)
         {
-            x = X;
-            y = Y;
+            X = x;
+            Y = y;
         }
     }
 }

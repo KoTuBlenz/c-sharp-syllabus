@@ -2,7 +2,6 @@
 {
     public class Car
     {
-
         private double _startKilometers; // Starting odometer reading
         private double _endKilometers; // Ending odometer reading
         private double _liters; // Liters of gas used between the readings

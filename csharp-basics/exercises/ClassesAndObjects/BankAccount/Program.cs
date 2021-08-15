@@ -16,5 +16,4 @@ namespace BankAccount
             Console.ReadKey();
         }
     }
-    
 }

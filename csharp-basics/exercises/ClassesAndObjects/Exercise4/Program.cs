@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise4
 {
@@ -19,11 +16,12 @@ namespace Exercise4
             List<Movie> moviesPg = Movie.GetPG(moviesList);
             foreach (Movie movie in moviesPg)
             {
-                movie.printMovie();
+                movie.PrintMovie();
             }
             Console.ReadKey();
         }
     }
+
     class Movie
     {
         private string _movieTitle;
@@ -36,6 +34,7 @@ namespace Exercise4
             _movieStudio = movieStudio;
             _movieRating = movieRating;
         }
+
         //Movie contructor which takes 2 arguments: movie tile and studio
         //Sets rating to PG
         public Movie(string movieTitle, string movieStudio)
@@ -44,16 +43,19 @@ namespace Exercise4
             _movieStudio = movieStudio;
             _movieRating = "PG";
         }
+
         //Displays information about movie
-        public void printMovie()
+        public void PrintMovie()
         {
             Console.WriteLine($"\"{_movieTitle}\" made by \"{_movieStudio}\", rated ({_movieRating})");
         }
+
         //Checks if movie is rated PG
         private bool isMoviePG()
         {
             return _movieRating == "PG";
         }
+
         //Takes a list of movies as an argument and displays list of movies rated PG
         public static List<Movie> GetPG(IList<Movie> movies)
         {
