@@ -14,13 +14,6 @@ namespace Exercise9
                 Console.WriteLine(thing);
             }
             randomList.Clear();
-            randomList.Add("Mac and cheese");
-            randomList.Add("Mac and cheese");
-            Console.WriteLine("\nList with duplicate items");
-            foreach (string thing in randomList)
-            {
-                Console.WriteLine(thing);
-            }
             Console.ReadKey();
         }
     }

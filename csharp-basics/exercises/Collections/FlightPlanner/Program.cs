@@ -14,7 +14,7 @@ namespace FlightPlanner
             Console.WriteLine("Choose one of the options\n" +
                 "1.Choose a flight\n" +
                 "0.Exit Program");
-            if (checkUserInput() == 1)
+            if (CheckUserInput() == 1)
             {
                 Console.Clear();
                 PrintFlightList();
@@ -55,7 +55,7 @@ namespace FlightPlanner
             Console.ReadKey();
         }
 
-        public static int checkUserInput()
+        public static int CheckUserInput()
         {
             while (true)
             {
