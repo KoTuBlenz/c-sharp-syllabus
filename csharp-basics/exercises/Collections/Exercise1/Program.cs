@@ -1,32 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise1
 {
     class Program
     {
-        /**
-           * Origination:
-           * Audi -> Germany
-           * BMW -> Germany
-           * Honda -> Japan
-           * Mercedes -> Germany
-           * VolksWagen -> Germany
-           * Tesla -> USA
-           */
-
         private static void Main(string[] args)
         {
-            string[] array = { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
+            var carList = new List<string>() { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
+            foreach(string car in carList)
+            {
+                Console.WriteLine(car);
+            }
+            Console.WriteLine("\n");
 
-            //todo - replace array with an List and print out the results
+            var carHashSet = new HashSet<string>() { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
+            foreach (string car in carHashSet)
+            {
+                Console.WriteLine(car);
+            }
+            Console.WriteLine("\n");
 
-            //todo - replace array with a HashSet and print out the results
-
-            //todo - replace array with a Dictionary (use brand as key and origination as value) and print out the results
+            var carDictionary = new Dictionary<string,string>() {};
+            carDictionary.Add("Audi", "Germany");
+            carDictionary.Add("BMW", "Germany");
+            carDictionary.Add("Honda", "Japan");
+            carDictionary.Add("Mercedes", "Germany");
+            carDictionary.Add("VolksWagen", "Germany");
+            carDictionary.Add("Tesla", "USA");
+            foreach(KeyValuePair<string,string> car in carDictionary)
+            {
+                Console.WriteLine($"Car brand \"{car.Key}\" is manufactured in {car.Value}");
+            }
+            Console.ReadKey();
         }
     }
 }

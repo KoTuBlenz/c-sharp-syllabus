@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic; 
 
 namespace ListExercise5
 {
@@ -18,12 +15,10 @@ namespace ListExercise5
                 "White",
                 "Black"
             };
-
             Console.WriteLine(string.Join(",", colors));
-
-            //TODO: Change the third element with "Yellow"
-
+            colors[2] = "Yellow";
             Console.WriteLine(string.Join(",", colors));
+            Console.ReadKey();
         }
     }
 }
