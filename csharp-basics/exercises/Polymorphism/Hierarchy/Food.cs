@@ -6,8 +6,7 @@ namespace Hierarchy
 {
     abstract class Food
     {
-        public int amount { get; set; }
-        public string type { get; set; }
-        
+        public int Amount { get; set; }
+        public string Type { get; set; }
     }
 }

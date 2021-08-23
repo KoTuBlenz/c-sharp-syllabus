@@ -53,7 +53,7 @@ namespace Hierarchy
                         Console.WriteLine("Incorrect input");
                         return;
                 }
-                animalList[i].EatFood(animalList[i].IsFoodCorrect(food.type), food.amount);
+                animalList[i].EatFood(animalList[i].IsFoodCorrect(food.Type), food.Amount);
                 Console.WriteLine(animalList[i].ToString());
                 i++;
             }

@@ -6,15 +6,15 @@ namespace Hierarchy
 {
     class Cat: Feline
     {
-        string foodType = "vegetable, meat";
+        private string _foodType = "vegetable, meat";
         private string _breed;
 
-        public Cat(string Name, double AnimalWeight, string LivingRegion, string breed)
+        public Cat(string name, double animalWeight, string livingRegion, string breed)
         {
-            animalType = "Cat";
-            name = Name;
-            animalWeight = AnimalWeight;
-            livingRegion = LivingRegion;
+            AnimalType = "Cat";
+            Name = name;
+            AnimalWeight = animalWeight;
+            LivingRegion = livingRegion;
             _breed = breed;
         }
 
@@ -25,12 +25,12 @@ namespace Hierarchy
 
         public override bool IsFoodCorrect(string food)
         {
-            return foodType.Contains(food);
+            return _foodType.Contains(food);
         }
 
         public override string ToString()
         {
-            return $"{animalType} [{name}, {_breed}, {animalWeight}, {livingRegion}, {foodEaten}]";
+            return $"{AnimalType} [{Name}, {_breed}, {AnimalWeight}, {LivingRegion}, {FoodEaten}]";
         }
     }
 }

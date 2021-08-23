@@ -6,10 +6,10 @@ namespace Hierarchy
 {
     class Meat: Food
     {
-        public Meat(int Amount) 
+        public Meat(int amount) 
         {
-            type = "meat";
-            amount = Amount;
+            Type = "meat";
+            Amount = amount;
         }
     }
 }

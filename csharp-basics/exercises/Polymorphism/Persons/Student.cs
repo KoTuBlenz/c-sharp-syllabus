@@ -4,16 +4,15 @@ namespace Persons
 {
     class Student: Person
     {
-        public double gpa { get; set; }
-
-        public Student(string first, string last, string homeAdress, int ID, double GPA) : base(first, last, homeAdress, ID)
+        private double _gpa;
+        public Student(string first, string last, string homeAdress, int ID, double gpa) : base(first, last, homeAdress, ID)
         {
-            gpa = GPA;
+            _gpa = gpa;
         }
 
         public override void Display()
         {
-            Console.WriteLine($"First name:{firstName}, last name: {lastName}.\nHome adress {adress}, ID: {id}. GPA: {gpa}");
+            Console.WriteLine($"First name:{FirstName}, last name: {LastName}.\nHome adress {Adress}, ID: {Id}. GPA: {_gpa}");
             Console.WriteLine("------------------------------------------------------------------------");
         }
     }

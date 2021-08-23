@@ -6,13 +6,13 @@ namespace Hierarchy
 {
     class Mouse: Mammal
     {
-        string foodType = "vegetable";
-        public Mouse(string Name, double AnimalWeight, string LivingRegion)
+        private string _foodType = "vegetable";
+        public Mouse(string name, double animalWeight, string livingRegion)
         {
-            animalType = "Mouse";
-            name = Name;
-            animalWeight = AnimalWeight;
-            livingRegion = LivingRegion;
+            AnimalType = "Mouse";
+            Name = name;
+            AnimalWeight = animalWeight;
+            LivingRegion = livingRegion;
         }
 
         public override void MakeNoise()
@@ -22,7 +22,7 @@ namespace Hierarchy
 
         public override bool IsFoodCorrect(string food)
         {
-            return foodType.Contains(food);
+            return _foodType.Contains(food);
         }
     }
 }

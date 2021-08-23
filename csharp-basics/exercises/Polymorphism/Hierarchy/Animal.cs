@@ -6,10 +6,10 @@ namespace Hierarchy
 {
    abstract class Animal
     {
-        public string name { get; set; }
-        public string animalType { get; set; }
-        public double animalWeight { get; set; }
-        public int foodEaten { get; set; }
+        public string Name { get; set; }
+        public string AnimalType { get; set; }
+        public double AnimalWeight { get; set; }
+        public int FoodEaten { get; set; }
 
         public abstract void MakeNoise();
         public abstract bool IsFoodCorrect(string food);
@@ -19,11 +19,11 @@ namespace Hierarchy
         {
             if (isFoodCorrect)
             {
-                foodEaten += amountOfFood;
+                FoodEaten += amountOfFood;
             }
             else
             {
-                Console.WriteLine($"{animalType}s are not eating that type of food!");
+                Console.WriteLine($"{AnimalType}s are not eating that type of food!");
             }
         }
     }

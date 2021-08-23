@@ -6,11 +6,11 @@ namespace Hierarchy
 {
     abstract class Mammal: Animal
     {
-        public virtual string livingRegion { get; set; }
+        public virtual string LivingRegion { get; set; }
  
         public override string ToString()
         { 
-            return $"{animalType} [{name}, {animalWeight}, {livingRegion}, {foodEaten}]";
+            return $"{AnimalType} [{Name}, {AnimalWeight}, {LivingRegion}, {FoodEaten}]";
         }
     }
 }

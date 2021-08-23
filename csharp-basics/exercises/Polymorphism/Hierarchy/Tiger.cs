@@ -6,18 +6,18 @@ namespace Hierarchy
 {
     class Tiger: Feline
     {
-        string foodType = "meat";
-        public Tiger(string Name, double AnimalWeight, string LivingRegion)
+        private string _foodType = "meat";
+        public Tiger(string name, double animalWeight, string livingRegion)
         {
-            animalType = "Tiger";
-            name = Name;
-            animalWeight = AnimalWeight;
-            livingRegion = LivingRegion;
+            AnimalType = "Tiger";
+            Name = name;
+            AnimalWeight = animalWeight;
+            LivingRegion = livingRegion;
         }
 
         public override bool IsFoodCorrect(string food)
         {
-            return foodType.Contains(food);
+            return _foodType.Contains(food);
         }
 
         public override void MakeNoise()

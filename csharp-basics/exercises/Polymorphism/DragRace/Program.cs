@@ -40,6 +40,7 @@ namespace DragRace
                         fastestCar = car;
                         maxSpeed = speed;
                     }
+                    
                     if (i==2)
                     {
                         ICarBoost carWithBoost = car as ICarBoost;
