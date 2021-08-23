@@ -1,24 +1,58 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace DragRace
 {
+    interface ICar
+    {
+        string ShowCurrentSpeed();
+        string name { get; set; }
+        void SpeedUp();
+        void SlowDown();
+        void StartEngine();
+    }
+
+    interface ICarBoost : ICar
+    {
+        void UseNitrousOxideEngine();
+    }
+
     class Program
     {
-        /**
- * Take a look at the cars in this solution.
- * 1. Extract common behaviour to an interface called Car, and use it in the all classes.
- * Which methods will be extracted with an empty body, and which can be default?
- * 2. Create two more cars of your own choice.
- * 3. As you see there is a possibility to use some kind of boost in Lexus, extract it to a new interface
-          and add that behaviour in one more car.
- * 4. Create one instance of an each car and add them to list.
- * 5. Iterate over the list 10 times, in the 3rd iteration use speed boost on the car if they have one.
- * 6. Print out the car name and speed of the fastest car
- */
-
         private static void Main(string[] args)
         {
-            
+            List<ICar> carList = new List<ICar>() {};
+            carList.Add(new Audi { name = "Audi A4" });
+            carList.Add(new Bmw { name = "BMW Z4" });
+            carList.Add(new Volvo { name = "Volvo V70" });
+            carList.Add(new Opel { name = "Opel GT" });
+            carList.Add(new Lexus { name = "Lexus F Sport" });
+            carList.Add(new Tesla { name = "Tesla Model S" });
+            ICar fastestCar = null;
+            int maxSpeed = 0;
+            for (int i=0; i<10; i++)
+            {
+                foreach(ICar car in carList)
+                {
+                    car.SpeedUp();
+                    int speed = int.Parse(car.ShowCurrentSpeed());
+                    if(maxSpeed < speed)
+                    {
+                        fastestCar = car;
+                        maxSpeed = speed;
+                    }
+                    
+                    if (i==2)
+                    {
+                        ICarBoost carWithBoost = car as ICarBoost;
+                        if (carWithBoost != null)
+                        {
+                            carWithBoost.UseNitrousOxideEngine();
+                        }
+                    }
+                }
+            }
+            Console.WriteLine($"The fastest car is {fastestCar.name} with max speed {fastestCar.ShowCurrentSpeed()}");
+            Console.ReadKey();
         }
     }
 }
