@@ -2,7 +2,7 @@
 
 namespace Exercise5
 {
-    class Date
+    public class Date
     {
         public int day { get; set; }
         public int month { get; set; }
@@ -20,16 +20,15 @@ namespace Exercise5
         {
             return day < 32 && month < 13;
         }
-        //Prints date or "Date is not correct", if date is not correct
-        public void PrintDate()
+        public override string ToString()
         {
             if (IsDateCorrect())
             {
-                Console.WriteLine($"{String.Format("{0:00}", day)}/{String.Format("{0:00}", month)}/{year}");
+                return $"{String.Format("{0:00}", day)}/{String.Format("{0:00}", month)}/{year}";
             }
             else
             {
-                Console.WriteLine("Date is not correct");
+                return "Date is not correct";
             }
         }
     }
