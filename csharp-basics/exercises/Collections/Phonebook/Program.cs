@@ -14,7 +14,7 @@ namespace Phonebook
             numberList.PutNumber("Zack", "25766794");
             Console.WriteLine($"Jack phone number is {numberList.GetNumber("Jack")}");
             Console.WriteLine($"Jonh phone number is {numberList.GetNumber("Jonh")}");
-            numberList.PrintPhoneDirectory();
+            Console.WriteLine(numberList.ToString());
             Console.ReadKey();
         }
     }
