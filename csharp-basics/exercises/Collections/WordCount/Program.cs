@@ -8,25 +8,36 @@ namespace WordCount
         static void Main(string[] args)
         {
             string path = "../../lear.txt";
-            Console.WriteLine("Lines in text: "+LinesInText(path));
-            Console.WriteLine("Words in text: " + WordsInText(path));
-            Console.WriteLine("Chars in text: " + CharsInText(path));
+            var text = new TextProperties(File.ReadAllText(path));
+            Console.WriteLine("Lines in text: "+ text.LinesInText());
+            Console.WriteLine("Words in text: " + text.WordsInText());
+            Console.WriteLine("Chars in text: " + text.CharsInText());
             Console.ReadKey();
         }
+    }
 
-        public static int LinesInText(string path)
+    public class TextProperties
+    {
+        private string _text;
+
+        public TextProperties(string text)
         {
-            return File.ReadAllLines(path).Length;
+            _text = text;
         }
 
-        public static int WordsInText(string path)
+        public int LinesInText()
         {
-            return File.ReadAllText(path).Replace("'", " ").Replace("  ", " ").Split(' ', '\n').Length;
+            return _text.Split('\n').Length;
         }
 
-        public static int CharsInText(string path)
+        public int WordsInText()
         {
-            return File.ReadAllText(path).Replace("\n","").ToCharArray().Length;
+            return _text.Replace("'", " ").Replace("  ", " ").Split(' ', '\n').Length;
+        }
+
+        public int CharsInText()
+        {
+            return _text.Replace("\n", "").ToCharArray().Length;
         }
     }
 }
