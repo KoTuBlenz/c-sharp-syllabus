@@ -112,11 +112,16 @@ namespace Exercise1
         }
     }
 
-    class Product
+    public class Product
     {
         private string _name;
         private double _price;
         private int _amount;
+
+        public string Name {get {return _name;} }
+        public double Price { get { return _price; } }
+        public int Amount { get { return _amount; } }
+
         public Product(string name, double price, int amount)
         {
             _name = name;
