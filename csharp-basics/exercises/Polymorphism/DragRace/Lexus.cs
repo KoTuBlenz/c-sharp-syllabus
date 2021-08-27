@@ -4,27 +4,27 @@ namespace DragRace
 {
     public class Lexus : ICar, ICarBoost
     {
-        private int currentSpeed = 0;
-        public string name { get; set; }
+        private int _currentSpeed = 0;
+        public string Name { get; set; }
 
         public void SpeedUp() 
         {
-            currentSpeed+=15;
+            _currentSpeed+=15;
         }
 
         public void SlowDown() 
         {
-            currentSpeed-=18;
+            _currentSpeed-=18;
         }
 
-        public string ShowCurrentSpeed() 
+        public string CurrentSpeed
         {
-            return currentSpeed.ToString();
+            get => _currentSpeed.ToString();
         }
 
         public void UseNitrousOxideEngine() 
         {
-            currentSpeed+=10;
+            _currentSpeed+=10;
         }
 
         public void StartEngine() 

@@ -6,22 +6,22 @@ namespace DragRace
 {
     public class Opel : ICar
     {
-        private int currentSpeed = 0;
-        public string name { get; set; }
+        private int _currentSpeed = 0;
+        public string Name { get; set; }
 
         public void SpeedUp()
         {
-            currentSpeed += 13;
+            _currentSpeed += 13;
         }
 
         public void SlowDown()
         {
-            currentSpeed -= 20;
+            _currentSpeed -= 20;
         }
 
-        public string ShowCurrentSpeed()
+        public string CurrentSpeed
         {
-            return currentSpeed.ToString();
+            get => _currentSpeed.ToString();
         }
 
         public void StartEngine()
