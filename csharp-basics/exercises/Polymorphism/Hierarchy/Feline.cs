@@ -4,5 +4,5 @@ using System.Text;
 
 namespace Hierarchy
 {
-    abstract class Feline : Mammal { }
+    public abstract class Feline : Mammal { }
 }

@@ -38,7 +38,7 @@ namespace Hierarchy
                         Console.WriteLine("Incorrect type");
                         return;
                 }
-                animalList[i].MakeNoise();
+                Console.WriteLine(animalList[i].MakeNoise());
                 input = Console.ReadLine().Split(' ');
                 Food food;
                 switch (input[0].ToLower())
@@ -60,6 +60,7 @@ namespace Hierarchy
             var animalStringList = new List<String>();
             animalList.ForEach(animal => animalStringList.Add(animal.ToString()));
             Console.WriteLine(String.Join(", ", animalStringList));
+            Console.ReadKey();
         }
     } 
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hierarchy
 {
-    class Mouse: Mammal
+    public class Mouse: Mammal
     {
         private string _foodType = "vegetable";
         public Mouse(string name, double animalWeight, string livingRegion)
@@ -15,14 +15,14 @@ namespace Hierarchy
             LivingRegion = livingRegion;
         }
 
-        public override void MakeNoise()
+        public override string MakeNoise()
         {
-            Console.WriteLine("Squeak");
+            return "Squeak";
         }
 
         public override bool IsFoodCorrect(string food)
         {
-            return _foodType.Contains(food);
+            return _foodType.Contains(food.ToLower());
         }
     }
 }

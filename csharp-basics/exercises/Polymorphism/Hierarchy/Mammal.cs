@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hierarchy
 {
-    abstract class Mammal: Animal
+    public abstract class Mammal: Animal
     {
         public virtual string LivingRegion { get; set; }
  
