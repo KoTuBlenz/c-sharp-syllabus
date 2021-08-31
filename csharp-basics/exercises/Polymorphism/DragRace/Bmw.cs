@@ -4,21 +4,21 @@ namespace DragRace
 {
     public class Bmw : ICar
     {
-        private int currentSpeed = 0;
-        public string name { get; set; }
+        private int _currentSpeed = 0;
+        public string Name { get; set; }
         public void SpeedUp() 
         {
-            currentSpeed+=15;
+            _currentSpeed+=15;
         }
 
         public void SlowDown() 
         {
-            currentSpeed-=20;
+            _currentSpeed-=20;
         }
 
-        public string ShowCurrentSpeed() 
+        public string CurrentSpeed
         {
-            return currentSpeed.ToString();
+            get => _currentSpeed.ToString();
         }
 
         public void StartEngine() 

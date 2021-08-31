@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hierarchy
 {
-    class Zebra: Mammal
+    public class Zebra: Mammal
     {
         private string _foodType = "vegetable";
         public Zebra(string name, double animalWeight, string livingRegion)
@@ -18,12 +18,12 @@ namespace Hierarchy
 
         public override bool IsFoodCorrect(string food)
         {
-            return _foodType.Contains(food);
+            return _foodType.Contains(food.ToLower());
         }
 
-        public override void MakeNoise()
+        public override string MakeNoise()
         {
-            Console.WriteLine("Whinny");
+            return "Whinny";
         }
     }
 }

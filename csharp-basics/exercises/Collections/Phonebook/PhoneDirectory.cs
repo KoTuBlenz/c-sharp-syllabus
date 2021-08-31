@@ -5,7 +5,7 @@ namespace PhoneBook
 {
     public class PhoneDirectory
     {
-        private SortedDictionary<string, string> PhoneEntryList = new SortedDictionary<string, string>();
+        public SortedDictionary<string, string> PhoneEntryList = new SortedDictionary<string, string>();
         public PhoneDirectory() { }
 
         public string GetNumber(string name)
@@ -32,18 +32,18 @@ namespace PhoneBook
             }
             else
             {
-                var newEntry = new PhoneEntry { name = name, number = number }; //Is the PhoneEntry object necessary,..
-                PhoneEntryList.Add(name, number);                               //..if the the name is saved as dictionaries key and phone number is the value?
+                var newEntry = new PhoneEntry { name = name, number = number };
+                PhoneEntryList.Add(name, number);                               
             }
         }
-        //Prints the list of numbers sorted alphabetically by the name
-        //Used to check if the values are stored correctly in the dictionary
-        public void PrintPhoneDirectory()
+        public override string ToString()
         {
+            var phoneEntries= new List<string>();
             foreach (KeyValuePair<string, string> kvp in PhoneEntryList)
             {
-                Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                phoneEntries.Add($"{kvp.Key}: {kvp.Value}");
             }
+            return string.Join("\n", phoneEntries);
         }
     }
 }

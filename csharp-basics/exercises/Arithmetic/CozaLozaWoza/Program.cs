@@ -10,43 +10,48 @@ namespace CozaLozaWoza
     {
         static void Main(string[] args)
         {
+            var result = "";
             for (int i = 1; i <= 110; i++)
-            {              
-                string answer = "";
-                if (i % 3 == 0)
-                {
-                    answer += "Coza";
-                }
-
-                if (i % 5 == 0)
-                {
-                    answer += "Loza";
-                }
-
-                if (i % 7 == 0)
-                {
-                    answer += "Woza";
-                }
-
-                if (answer != "")
-                {
-                    Console.Write(answer);
-                }
-                else
-                {
-                    Console.Write(i);
-                }
-
+            {
+                result += CozaLozaWoza.CheckNumber(i);
                 if (i % 11 == 0)
                 {
-                    Console.WriteLine();
+                    result += "\n";
                 }
                 else
                 {
-                    Console.Write(" ");
+                    result += " ";
                 }
             }
+            Console.WriteLine(result);
             Console.ReadKey();
+        }
+    }
+    public class CozaLozaWoza
+    {
+        public static string CheckNumber(int number)
+        {
+            string answer = "";
+            if (number % 3 == 0)
+            {
+                answer += "Coza";
+            }
+
+            if (number % 5 == 0)
+            {
+                answer += "Loza";
+            }
+
+            if (number % 7 == 0)
+            {
+                answer += "Woza";
+            }
+
+            if (answer.Length == 0)
+            {
+                answer = number.ToString();
+            }
+            return answer;
         }
     }
 }

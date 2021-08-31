@@ -11,20 +11,24 @@ namespace Exercise2
         static void Main(string[] args)
         {
             Console.WriteLine("Enter a number!");
-            int.TryParse(Console.ReadLine(), out int number);
+            var number = int.Parse(Console.ReadLine());
+            Console.WriteLine(CheckOddEven.ReturnOddEven(number));
+            Console.ReadKey();
+        }
+    }
 
+    public class CheckOddEven
+    {
+        public static string ReturnOddEven(int number)
+        {
             if (number % 2 == 0)
             {
-                Console.WriteLine("Even number");
+                return "Even number";
             }
             else
             {
-                Console.WriteLine("Odd number");
+                return "Odd number";
             }
-
-            Console.ReadKey();
-            Console.WriteLine("Bye!");
-            Console.ReadKey();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Account
 {
-    class Account
+    public class Account
     {
         private string _name;
         private double _money;
@@ -11,20 +11,20 @@
             _money = v2;
         }
 
-        public double withdrawal(double i)
+        public double Withdrawal(double i)
         {
             _money -= i;
             return i;
         }
 
-        public void deposit(double i)
+        public void Deposit(double i)
         {
             _money += i;
         }
 
-        public double balance()
+        public double Balance
         {
-            return _money;
+            get => _money;
         }
 
         public override string ToString()
@@ -36,6 +36,10 @@
         {
             get => _name;
             set => _name = value;
+        }
+        public static void Transfer(Account from, Account to, double howMuch)
+        {
+            to.Deposit(from.Withdrawal(howMuch));
         }
     }
 }

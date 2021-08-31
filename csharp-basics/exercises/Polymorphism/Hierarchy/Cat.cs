@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hierarchy
 {
-    class Cat: Feline
+    public class Cat: Feline
     {
         private string _foodType = "vegetable, meat";
         private string _breed;
@@ -18,14 +18,14 @@ namespace Hierarchy
             _breed = breed;
         }
 
-        public override void MakeNoise()
+        public override string MakeNoise()
         {
-            Console.WriteLine("Meow");
+            return "Meow";
         }
 
         public override bool IsFoodCorrect(string food)
         {
-            return _foodType.Contains(food);
+            return _foodType.Contains(food.ToLower());
         }
 
         public override string ToString()

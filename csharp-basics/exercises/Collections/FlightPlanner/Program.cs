@@ -6,103 +6,58 @@ namespace FlightPlanner
 {
     class Program
     {
-        private const string Path = "../../flights.txt";
-        private static Dictionary<string, List<string>> _flightList = new Dictionary<string, List<string>>() { };
         private static void Main(string[] args)
         {
-            FillFlightList(Path);
-            Console.WriteLine("Choose one of the options\n" +
-                "1.Choose a flight\n" +
-                "0.Exit Program");
-            if (CheckUserInput() == 1)
-            {
-                Console.Clear();
-                PrintFlightList();
-                string city;
-                while (true)
-                {
-                    Console.WriteLine("Enter a city from which you would like to start");
-                    city = Console.ReadLine();
-                    if (!_flightList.ContainsKey(city))
-                    {
-                        Console.WriteLine("City not found");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"Starting city: {city}\n" +
-                            $"\nPossible target cities:");
-                        PrintTargetCities(city);
-                        break;
-                    }
-                }
-                while (true)
-                {
-                    Console.WriteLine("Enter city to which you would like to travel to");
-                    string targetCity = Console.ReadLine();
-                    if (_flightList[city].Contains(targetCity))
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"Your chosen flight is: |{city}| => |{targetCity}|");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("City not found");
-                    }
-                }
-            }
-            Console.ReadKey();
-        }
+            string path = "../../flights.txt";
+            var flights = new FlightPlanner(File.ReadAllText(path));
 
-        public static int CheckUserInput()
-        {
-            while (true)
+            if (int.TryParse(Console.ReadLine(), out int x))
             {
-                if (int.TryParse(Console.ReadLine(), out int x))
+                if (x == 1)
                 {
-                    return x;
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect input");
+                    Console.Clear();
+                    Console.WriteLine(string.Join("\n", flights.StartingCities()));
+                    string startingCity;
+                    //Sets startingCity and displays list of targetCities
+                    while (true) 
+                    {
+                        Console.WriteLine("Enter a city from which you would like to start");
+                        startingCity = Console.ReadLine();
+                        var targetCities = flights.TargetCities(startingCity);
+                        if (targetCities == null)
+                        {
+                            Console.WriteLine("City not found");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Starting city: {startingCity}\n" + $"\nPossible target cities:\n" + $"{string.Join("\n", targetCities)}");
+                            break;
+                        }
+                    }
+                    //Sets targetCity and, if successful, displays flight from startingCity to targetCity
+                    while (true)   
+                    {
+                        Console.WriteLine("Enter city to which you would like to travel to");
+                        string targetCity = Console.ReadLine();
+                        var flight = flights.FlightRoute(startingCity, targetCity);
+                        if (flight != null)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(flight);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("City not found");
+                        }
+                    }
                 }
             }
-        }
-
-        public static void FillFlightList(string path)
-        {
-            var readText = File.ReadAllLines(path);
-            foreach (var s in readText)
+            else
             {
-                string[] cities = s.Replace(" -> ", "-").Split('-');
-                if (!_flightList.ContainsKey(cities[0]))
-                {
-                    _flightList.Add(cities[0], new List<string>() { cities[1] });
-                }
-                else
-                {
-                    _flightList[cities[0]].Add(cities[1]);
-                }
+                Console.WriteLine("Incorrect input!");
             }
-        }
-
-        public static void PrintTargetCities(string targetCity)
-        {
-            foreach (string city in _flightList[targetCity])
-            {
-                Console.WriteLine(city);
-            }
-            Console.WriteLine();
-        }
-
-        public static void PrintFlightList()
-        {
-            foreach (KeyValuePair<string, List<string>> kvp in _flightList)
-            {
-                Console.WriteLine(kvp.Key);
-            }
-            Console.WriteLine();
         }
     }
 }

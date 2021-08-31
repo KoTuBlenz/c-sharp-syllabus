@@ -4,29 +4,29 @@ using System.Text;
 
 namespace DragRace
 {
-    class Volvo : ICar, ICarBoost
+    public class Volvo : ICar, ICarBoost
     {
-        private int currentSpeed = 0;
-        public string name { get; set; }
+        private int _currentSpeed = 0;
+        public string Name { get; set; }
 
         public void SpeedUp()
         {
-            currentSpeed += 12;
+            _currentSpeed += 12;
         }
 
         public void SlowDown()
         {
-            currentSpeed -= 22;
+            _currentSpeed -= 22;
         }
 
-        public string ShowCurrentSpeed()
+        public string CurrentSpeed
         {
-            return currentSpeed.ToString();
+            get => _currentSpeed.ToString();
         }
 
         public void UseNitrousOxideEngine()
         {
-            currentSpeed += 10;
+            _currentSpeed += 10;
         }
         public void StartEngine()
         {
